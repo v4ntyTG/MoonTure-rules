@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3eee6" id="themeColor">
+  <meta name="description" content="Официальные правила племени MoonTune в My Singing Monsters.">
+  <meta name="color-scheme" content="light dark">
+  <title>MoonTune — Правила племени</title>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-elevated: #f9f6f1;
+      --bg-soft: #eee8de;
+      --text: #292621;
+      --text-soft: #59544d;
+      --muted: #817a70;
+      --line: #d8d0c5;
+      --line-strong: #c7bcad;
+      --accent: #746854;
+      --accent-2: #5f5a4d;
+      --accent-soft: #e7e0d4;
+      --success-bg: #e7ebe2;
+      --success-text: #5f6957;
+      --danger-bg: #eee1dc;
+      --danger-text: #8a5e56;
+      --shadow: 0 22px 65px rgba(55, 45, 34, .07);
+      --shadow-soft: 0 9px 30px rgba(55, 45, 34, .045);
+      --content: 820px;
+      --wide: 1160px;
+      --ease: cubic-bezier(.2,.75,.2,1);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #25221e;
+      --bg-elevated: #2d2a25;
+      --bg-soft: #312d27;
+      --text: #eee9e1;
+      --text-soft: #c4bdb2;
+      --muted: #968d81;
+      --line: #474139;
+      --line-strong: #5b5147;
+      --accent: #c1ad91;
+      --accent-2: #d6c3a8;
+      --accent-soft: #3b352e;
+      --success-bg: #34382f;
+      --success-text: #bec8b3;
+      --danger-bg: #3b302c;
+      --danger-text: #d3a59a;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .25);
+      --shadow-soft: 0 12px 35px rgba(0, 0, 0, .16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(145, 122, 92, .055), transparent 27%),
+        radial-gradient(circle at 88% 34%, rgba(145, 122, 92, .04), transparent 25%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color .45s ease, color .45s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(100, 88, 72, .08) 0 1px, transparent 1.4px),
+        radial-gradient(circle at 72% 35%, rgba(125, 105, 78, .07) 0 1px, transparent 1.4px),
+        radial-gradient(circle at 40% 78%, rgba(100, 88, 72, .06) 0 1px, transparent 1.4px);
+      background-size: 180px 180px, 240px 240px, 320px 320px;
+      z-index: -1;
+    }
+
+    ::selection { background: var(--accent-soft); color: var(--text); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+
+    .page-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 1000;
+      transition: width .1s linear, background-color .35s ease;
+    }
+
+    .site-header {
+      width: min(calc(100% - 40px), var(--wide));
+      margin: 0 auto;
+      padding: 20px 0 0;
+      animation: fadeIn .75s var(--ease) both;
+    }
+
+    .header-inner {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .moon-mark {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      position: relative;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-elevated);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .moon-mark::before {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      left: 5px;
+      top: 5px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      transition: transform .65s var(--ease), background-color .35s ease;
+    }
+
+    .moon-mark::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      left: 15px;
+      top: -1px;
+      border-radius: 50%;
+      background: var(--bg);
+      transition: background-color .45s ease, transform .65s var(--ease);
+    }
+
+    .brand:hover .moon-mark::before { transform: translateX(-2px) rotate(-6deg); }
+
+    .brand-copy { min-width: 0; }
+    .brand-name {
+      display: block;
+      font: 700 18px/1 Georgia, "Times New Roman", serif;
+      letter-spacing: -.02em;
+    }
+    .brand-sub {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .header-link,
+    .theme-switch {
+      border: 1px solid var(--line);
+      background: var(--bg-elevated);
+      color: var(--text-soft);
+      text-decoration: none;
+      min-height: 38px;
+      padding: 0 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      transition: transform .22s ease, border-color .22s ease, color .22s ease, background-color .35s ease, box-shadow .22s ease;
+      box-shadow: 0 4px 14px rgba(55,45,34,.025);
+    }
+
+    .header-link:hover,
+    .theme-switch:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      color: var(--text);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .theme-switch {
+      appearance: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .theme-icon {
+      width: 15px;
+      height: 15px;
+      position: relative;
+      display: inline-block;
+      border: 1.4px solid currentColor;
+      border-radius: 50%;
+      opacity: .9;
+    }
+
+    .theme-icon::before,
+    .theme-icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px -3px;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      opacity: .38;
+      transform: rotate(45deg);
+    }
+
+    html[data-theme="dark"] .theme-icon {
+      border-radius: 50%;
+      border-color: transparent transparent currentColor currentColor;
+      transform: rotate(-38deg);
+    }
+
+    html[data-theme="dark"] .theme-icon::before,
+    html[data-theme="dark"] .theme-icon::after { display: none; }
+
+    .hero {
+      width: min(100% - 40px, var(--content));
+      margin: 86px auto 0;
+      animation: heroIn .95s var(--ease) both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-2);
+      font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(47px, 8vw, 82px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      margin: 23px 0 0;
+      max-width: 700px;
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 16px;
+      margin-top: 24px;
+      color: var(--muted);
+      font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-meta span::before { content: "·"; color: var(--accent); }
+
+    .note {
+      width: min(100% - 40px, var(--content));
+      margin: 43px auto 0;
+      padding: 20px 22px;
+      background: color-mix(in srgb, var(--bg-elevated) 84%, transparent);
+      border: 1px solid var(--line);
+      border-left: 2px solid var(--accent);
+      box-shadow: var(--shadow-soft);
+      border-radius: 12px;
+      animation: fadeUp .85s .08s var(--ease) both;
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .note p { margin: 0; color: var(--text-soft); font-size: 13px; }
+
+    .layout {
+      width: min(100% - 40px, 1100px);
+      display: grid;
+      grid-template-columns: 180px minmax(0, var(--content));
+      gap: 60px;
+      align-items: start;
+      margin: 74px auto 0;
+    }
+
+    .toc {
+      position: sticky;
+      top: 22px;
+      padding-top: 3px;
+    }
+
+    .toc-title {
+      margin-bottom: 11px;
+      color: var(--muted);
+      font: 600 10px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 6px 0 6px 11px;
+      margin-left: -1px;
+      border-left: 1px solid transparent;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 1.45;
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    .toc a:hover { color: var(--text); transform: translateX(1px); }
+    .toc a.active { color: var(--accent-2); border-left-color: var(--accent); font-weight: 600; }
+
+    main { min-width: 0; }
+
+    .section {
+      padding-top: 76px;
+      scroll-margin-top: 28px;
+    }
+
+    .section:first-child { padding-top: 0; }
+
+    .section-head {
+      padding-bottom: 19px;
+      margin-bottom: 1px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      margin-bottom: 7px;
+      color: var(--accent-2);
+      font: 600 10px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .section-desc {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .rule {
+      position: relative;
+      padding: 22px 0 23px;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(8px);
+      animation: ruleIn .65s var(--ease) forwards;
+      animation-delay: calc(var(--i, 0) * 38ms);
+    }
+
+    .rule:last-child { border-bottom: 0; }
+
+    .rule-title {
+      display: grid;
+      grid-template-columns: 62px minmax(0,1fr);
+      gap: 15px;
+      align-items: baseline;
+    }
+
+    .num {
+      color: var(--accent-2);
+      font: 700 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .01em;
+    }
+
+    .rule h3 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .rule-body {
+      margin: 9px 0 0 77px;
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .rule-body strong { color: var(--text); }
+
+    .subrules {
+      margin: 15px 0 0 77px;
+      border-left: 1px solid var(--line-strong);
+      padding-left: 15px;
+    }
+
+    .subrule {
+      display: grid;
+      grid-template-columns: 67px minmax(0, 1fr);
+      gap: 13px;
+      padding: 6px 0;
+    }
+
+    .subnum {
+      color: var(--muted);
+      font: 600 11px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .subtext { color: var(--text-soft); font-size: 12px; }
+
+    .penalty {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 5px 7px;
+      align-items: baseline;
+      margin: 13px 0 0 77px;
+      padding: 8px 10px;
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid color-mix(in srgb, var(--success-text) 17%, transparent);
+      border-radius: 8px;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .penalty strong { color: var(--success-text); }
+
+    .penalty.danger {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border-color: color-mix(in srgb, var(--danger-text) 17%, transparent);
+    }
+    .penalty.danger strong { color: var(--danger-text); }
+
+    .policy-list {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .policy-row {
+      display: grid;
+      grid-template-columns: 82px minmax(0,1fr);
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .policy-num {
+      color: var(--accent-2);
+      font: 700 11px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .policy-row p { margin: 0; color: var(--text-soft); font-size: 12px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .stat {
+      padding: 17px 16px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(55,45,34,.025);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background-color .35s ease;
+    }
+
+    .stat:hover { transform: translateY(-2px); border-color: var(--line-strong); box-shadow: var(--shadow-soft); }
+
+    .stat b {
+      display: block;
+      margin-bottom: 4px;
+      font: 700 26px/1 Georgia, "Times New Roman", serif;
+    }
+
+    .stat span { color: var(--muted); font-size: 11px; }
+
+    .mod-note {
+      margin-top: 25px;
+      padding: 18px 18px 17px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent-soft) 55%, transparent), transparent);
+    }
+
+    .mod-note strong { display: block; font-size: 13px; margin-bottom: 5px; }
+    .mod-note p { margin: 0; color: var(--text-soft); font-size: 12px; }
+    .mod-note a { color: var(--accent-2); text-underline-offset: 3px; }
+
+    .cta {
+      margin-top: 67px;
+      padding: 28px 0 5px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta h2 { font-size: 27px; }
+    .cta p { margin: 9px 0 0; color: var(--muted); font-size: 13px; max-width: 690px; }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .resource-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      text-decoration: none;
+      font-size: 12px;
+      color: var(--text-soft);
+      transition: transform .22s ease, border-color .22s ease, color .22s ease, background-color .35s ease, box-shadow .22s ease;
+    }
+
+    .resource-link span:last-child { color: var(--muted); transition: transform .22s ease; }
+    .resource-link:hover { transform: translateY(-2px); border-color: var(--line-strong); color: var(--text); box-shadow: var(--shadow-soft); }
+    .resource-link:hover span:last-child { transform: translateX(3px); }
+
+    footer {
+      width: min(calc(100% - 40px), var(--wide));
+      margin: 88px auto 0;
+      padding: 30px 0 43px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font: 700 18px/1 Georgia, "Times New Roman", serif;
+      color: var(--text);
+    }
+
+    .footer-copy { margin-top: 8px; max-width: 560px; }
+
+    .footer-links {
+      display: flex;
+      gap: 8px 16px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      align-content: start;
+    }
+
+    .footer-links a { text-decoration: none; transition: color .2s ease; }
+    .footer-links a:hover { color: var(--text); }
+
+    .copyright {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+      font: 10px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+    }
+    .reveal.show { opacity: 1; transform: none; }
+
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      width: 39px;
+      height: 39px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
+      color: var(--text-soft);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .25s ease, visibility .25s ease, transform .25s ease, border-color .25s ease, background-color .35s ease;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(8px);
+    }
+
+    .back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+    .back-to-top:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes heroIn { from { opacity: 0; transform: translateY(17px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes ruleIn { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      .toc {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        gap: 7px;
+        overflow-x: auto;
+        margin-bottom: 34px;
+        padding: 7px 0 10px;
+        background: color-mix(in srgb, var(--bg) 93%, transparent);
+        backdrop-filter: blur(10px);
+        scrollbar-width: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .toc::-webkit-scrollbar { display: none; }
+      .toc-title { display: none; }
+      .toc a {
+        flex: 0 0 auto;
+        margin: 0;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .toc a.active { background: var(--accent-soft); border-color: var(--line-strong); }
+      .section { padding-top: 56px; }
+    }
+
+    @media (max-width: 650px) {
+      .site-header, footer { width: min(calc(100% - 26px), var(--wide)); }
+      .hero, .note, .layout { width: min(calc(100% - 26px), var(--content)); }
+      .site-header { padding-top: 14px; }
+      .header-inner { align-items: flex-start; }
+      .header-link { display: none; }
+      .theme-switch { min-height: 36px; padding-inline: 11px; }
+      .brand-sub { white-space: normal; }
+      .hero { margin-top: 59px; }
+      h1 { font-size: clamp(42px, 15vw, 64px); }
+      .lead { font-size: 15px; }
+      .stats { grid-template-columns: 1fr; }
+      .resource-links { grid-template-columns: 1fr; }
+      .rule-title { grid-template-columns: 55px minmax(0,1fr); gap: 10px; }
+      .rule-body,
+      .subrules,
+      .penalty { margin-left: 65px; }
+      .subrules { padding-left: 12px; }
+      .subrule { grid-template-columns: 60px minmax(0,1fr); gap: 9px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+      .back-to-top { right: 12px; bottom: 12px; }
+    }
+
+    @media (max-width: 440px) {
+      .brand-name { font-size: 17px; }
+      .brand-sub { font-size: 10px; }
+      .header-actions { gap: 6px; }
+      .theme-switch { font-size: 11px; }
+      h2 { font-size: 30px; }
+      .rule-body,
+      .subrules,
+      .penalty { margin-left: 0; }
+      .rule-title { grid-template-columns: 51px minmax(0,1fr); }
+      .subrules { margin-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .rule { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-top" id="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="MoonTune — начало">
+        <span class="moon-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-name">MoonTune</span>
+          <span class="brand-sub">официальные правила племени</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <a class="header-link" href="https://t.me/MoonTune_chat" target="_blank" rel="noopener noreferrer">Открыть чат <span aria-hidden="true">→</span></a>
+        <button class="theme-switch" id="themeToggle" type="button" aria-label="Переключить тему">
+          <span class="theme-icon" aria-hidden="true"></span>
+          <span id="themeLabel">Светлая</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <section class="hero">
+    <span class="eyebrow">My Singing Monsters · 2026</span>
+    <h1>Правила MoonTune</h1>
+    <p class="lead">Понятные правила для спокойного общения, честной игры и общего прогресса племени.</p>
+    <div class="hero-meta" aria-label="Информация о документе">
+      <span>официальная версия</span>
+      <span>действует для участников MoonTune</span>
+      <span>обновление: 2026</span>
+    </div>
+  </section>
+
+  <aside class="note">
+    <strong>Система наказаний</strong>
+    <p>Используются только четыре вида: устное предупреждение, временный мут, временный варн и постоянный бан в проекте. Срок выбирается внутри указанного диапазона с учётом обстоятельств и повторных нарушений.</p>
+  </aside>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Содержание">
+      <div class="toc-title">Содержание</div>
+      <a href="#chat" class="active">1. Чат</a>
+      <a href="#tribe">2. Племя</a>
+      <a href="#progression">3. Прогресс</a>
+      <a href="#moderation">4. Модерация</a>
+      <a href="#contacts">5. Ресурсы</a>
+    </nav>
+
+    <main>
+      <section class="section" id="chat">
+        <div class="section-head reveal">
+          <div class="section-kicker">Раздел 01</div>
+          <h2>Правила чата</h2>
+          <p class="section-desc">Основные правила общения в официальном чате MoonTune.</p>
+        </div>
+
+        <article class="rule" style="--i:1">
+          <div class="rule-title"><span class="num">1.1</span><h3>Контент 18+</h3></div>
+          <div class="rule-body">Запрещены материалы, сообщения, изображения и ссылки с содержанием 18+, а также намеренное обсуждение такой тематики.</div>
+          <div class="penalty"><strong>Наказание:</strong> мут 6–24 часа; повторно — мут 1–3 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:2">
+          <div class="rule-title"><span class="num">1.2</span><h3>Оскорбление администрации</h3></div>
+          <div class="rule-body">Запрещены прямые оскорбления, унижение и намеренное провоцирование администраторов по личным причинам или из-за их работы.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение или мут 12–48 часов; повторно — мут 3–7 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:3">
+          <div class="rule-title"><span class="num">1.3</span><h3>Оскорбление родителей участников</h3></div>
+          <div class="rule-body">Запрещены упоминания родителей участника в оскорбительном или унизительном контексте.</div>
+          <div class="penalty"><strong>Наказание:</strong> мут 24–72 часа; повторно — мут 7–14 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:4">
+          <div class="rule-title"><span class="num">1.4</span><h3>Разглашение личной информации</h3></div>
+          <div class="rule-body">Нельзя публиковать чужие личные данные без согласия владельца: номер телефона, личные аккаунты, переписки, документы и другую информацию, которую человек не разрешал распространять.</div>
+          <div class="penalty danger"><strong>Наказание:</strong> мут 1–7 суток; повторно или при серьёзном разглашении — бан в проекте навсегда.</div>
+        </article>
+
+        <article class="rule" style="--i:5">
+          <div class="rule-title"><span class="num">1.5</span><h3>Флуд</h3></div>
+          <div class="rule-body">Запрещено засорять чат множеством однотипных сообщений, повторов и бессмысленных отправок подряд.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение; при продолжении — мут 15–60 минут.</div>
+        </article>
+
+        <article class="rule" style="--i:6">
+          <div class="rule-title"><span class="num">1.6</span><h3>Спам</h3></div>
+          <div class="rule-body">Нельзя массово отправлять одинаковые сообщения, команды, упоминания, стикеры или другой повторяющийся контент.</div>
+          <div class="penalty"><strong>Наказание:</strong> мут 1–6 часов; повторно — мут 12–48 часов.</div>
+        </article>
+
+        <article class="rule" style="--i:7">
+          <div class="rule-title"><span class="num">1.7</span><h3>Реклама и ссылки без согласия</h3></div>
+          <div class="rule-body">Запрещена реклама сторонних проектов, каналов, чатов, ботов и услуг, а также массовая отправка ссылок без разрешения администрации.</div>
+          <div class="penalty"><strong>Наказание:</strong> мут 6–24 часа; повторно — мут 3–7 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:8">
+          <div class="rule-title"><span class="num">1.8</span><h3>Сильное попрошайничество</h3></div>
+          <div class="rule-body">Нельзя навязчиво просить валюту, подарки, донаты, уровни, доступы или другие вещи, особенно после отказа.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение; повторно — мут 1–6 часов.</div>
+        </article>
+
+        <article class="rule" style="--i:9">
+          <div class="rule-title"><span class="num">1.9</span><h3>Провокации и конфликты</h3></div>
+          <div class="rule-body">Нельзя специально разжигать ссоры, цеплять участников ради реакции и переводить обычное общение в конфликт.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение; при продолжении — мут 2–12 часов.</div>
+        </article>
+
+        <article class="rule" style="--i:10">
+          <div class="rule-title"><span class="num">1.10</span><h3>Выдача себя за администратора</h3></div>
+          <div class="rule-body">Запрещено представляться владельцем, администратором, модератором или иным представителем проекта без соответствующих прав.</div>
+          <div class="penalty danger"><strong>Наказание:</strong> мут 12–48 часов; при намеренном обмане участников — бан в проекте навсегда.</div>
+        </article>
+
+        <article class="rule" style="--i:11">
+          <div class="rule-title"><span class="num">1.11</span><h3>Угрозы и запугивание</h3></div>
+          <div class="rule-body">Запрещены реальные угрозы участникам и попытки запугать человека ради конфликта, выгоды или давления.</div>
+          <div class="penalty danger"><strong>Наказание:</strong> мут 1–7 суток; при серьёзной или повторной угрозе — бан в проекте навсегда.</div>
+        </article>
+
+        <article class="rule" style="--i:12">
+          <div class="rule-title"><span class="num">1.12</span><h3>Обход наказания</h3></div>
+          <div class="rule-body">Нельзя обходить мут или другое ограничение с помощью другого аккаунта и сразу возвращаться к нарушению.</div>
+          <div class="penalty"><strong>Наказание:</strong> мут 3–7 суток; при систематическом обходе — бан в проекте навсегда.</div>
+        </article>
+
+        <article class="rule" style="--i:13">
+          <div class="rule-title"><span class="num">1.13</span><h3>Вредное или незаконное содержание</h3></div>
+          <div class="rule-body">Нельзя публиковать материалы, которые нарушают закон, направлены на вред другим участникам или намеренно нарушают безопасность и спокойствие сообщества.</div>
+          <div class="penalty danger"><strong>Наказание:</strong> мут 1–30 суток или бан в проекте навсегда — в зависимости от тяжести нарушения.</div>
+        </article>
+      </section>
+
+      <section class="section" id="tribe">
+        <div class="section-head reveal">
+          <div class="section-kicker">Раздел 02</div>
+          <h2>Правила племени</h2>
+          <p class="section-desc">Условия участия в MoonTune и требования к игровому прогрессу.</p>
+        </div>
+
+        <article class="rule" style="--i:14">
+          <div class="rule-title"><span class="num">2.1</span><h3>Ник с содержанием 18+</h3></div>
+          <div class="rule-body">В имени участника племени не должно быть 18+ слов, непристойных выражений или очевидных попыток обойти правило заменой символов.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение и просьба изменить ник; отказ — мут 6–24 часа.</div>
+        </article>
+
+        <article class="rule" style="--i:15">
+          <div class="rule-title"><span class="num">2.2</span><h3>Минимальный лимит прокачки</h3></div>
+          <div class="rule-body">Каждый участник должен достигать установленного лимита. Текущий ориентир — <strong>60+ уровней</strong> за расчётный период.</div>
+          <div class="penalty"><strong>Наказание:</strong> устное предупреждение; при отсутствии прогресса — варн 3–7 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:16">
+          <div class="rule-title"><span class="num">2.3</span><h3>Ежемесячное повышение лимита</h3></div>
+          <div class="rule-body">Требование по прокачке увеличивается <strong>раз в 1 месяц на +5 уровней</strong>. Новое значение действует с нового расчётного периода.</div>
+          <div class="penalty"><strong>Важно:</strong> текущий лимит публикуется администрацией отдельно.</div>
+        </article>
+
+        <article class="rule" style="--i:17">
+          <div class="rule-title"><span class="num">2.4</span><h3>Не мешать общему прогрессу</h3></div>
+          <div class="rule-body">Запрещено намеренно саботировать совместные задачи, мешать развитию племени и игнорировать обязательства после предупреждения администрации.</div>
+          <div class="penalty"><strong>Наказание:</strong> варн 3–14 суток; при повторном саботаже — варн 14–30 суток.</div>
+        </article>
+
+        <article class="rule" style="--i:18">
+          <div class="rule-title"><span class="num">2.5</span><h3>Честность перед администрацией</h3></div>
+          <div class="rule-body">Нельзя намеренно предоставлять ложные сведения об активности, прогрессе или нарушениях другого участника ради получения несправедливого решения.</div>
+          <div class="penalty"><strong>Наказание:</strong> варн 7–14 суток; при систематическом обмане — варн 14–30 суток.</div>
+        </article>
+      </section>
+
+      <section class="section" id="progression">
+        <div class="section-head reveal">
+          <div class="section-kicker">Раздел 03</div>
+          <h2>Прогресс MoonTune</h2>
+          <p class="section-desc">Цель племени — развиваться вместе, без лишнего давления.</p>
+        </div>
+
+        <div class="stats reveal">
+          <div class="stat"><b>60+</b><span>текущий минимальный ориентир участника</span></div>
+          <div class="stat"><b>+5</b><span>к лимиту каждые 1 месяц</span></div>
+          <div class="stat"><b>2400</b><span>уровней — общая цель племени</span></div>
+        </div>
+
+        <div class="policy-list">
+          <div class="policy-row reveal"><span class="policy-num">3.1</span><p><strong>Выход из племени.</strong> Каждый участник может покинуть MoonTune по своим причинам. Сам факт выхода не является нарушением и не требует объяснения.</p></div>
+          <div class="policy-row reveal"><span class="policy-num">3.2</span><p><strong>Расчётный период.</strong> Прокачка считается по установленному администрацией месячному периоду. В спорных случаях учитываются фактическая активность и дата вступления.</p></div>
+          <div class="policy-row reveal"><span class="policy-num">3.3</span><p><strong>Общая цель.</strong> MoonTune стремится достичь отметки в <strong>2400 уровней</strong> за счёт совместного участия всех участников.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="moderation">
+        <div class="section-head reveal">
+          <div class="section-kicker">Раздел 04</div>
+          <h2>Модерация и наказания</h2>
+          <p class="section-desc">Только установленные виды наказаний. Сроки зависят от нарушения и повторности.</p>
+        </div>
+
+        <article class="rule" style="--i:19">
+          <div class="rule-title"><span class="num">4.1</span><h3>Устное предупреждение</h3></div>
+          <div class="rule-body">Предупреждение через упоминание участника. Оно не сохраняется в профиле и не имеет срока действия.</div>
+        </article>
+
+        <article class="rule" style="--i:20">
+          <div class="rule-title"><span class="num">4.2</span><h3>Временный мут</h3></div>
+          <div class="rule-body">Участник временно не может отправлять сообщения. После окончания срока ограничение снимается.</div>
+        </article>
+
+        <article class="rule" style="--i:21">
+          <div class="rule-title"><span class="num">4.3</span><h3>Временный варн</h3></div>
+          <div class="rule-body">Варн сохраняется в профиле на установленный срок. После его окончания варн снимается автоматически.</div>
+        </article>
+
+        <article class="rule" style="--i:22">
+          <div class="rule-title"><span class="num">4.4</span><h3>Постоянный бан в проекте</h3></div>
+          <div class="rule-body">Применяется очень редко: за особо серьёзные нарушения или за систематическое повторение тяжёлых нарушений.</div>
+          <div class="penalty danger"><strong>Срок:</strong> навсегда.</div>
+        </article>
+
+        <article class="rule" style="--i:23">
+          <div class="rule-title"><span class="num">4.5</span><h3>Диапазон срока</h3></div>
+          <div class="rule-body">Для каждого нарушения указаны минимальный и максимальный сроки. Администрация выбирает срок внутри этого диапазона с учётом обстоятельств.</div>
+        </article>
+
+        <article class="rule" style="--i:24">
+          <div class="rule-title"><span class="num">4.6</span><h3>Повторное нарушение</h3></div>
+          <div class="rule-body">При повторении одного нарушения срок может быть увеличен в пределах указанного диапазона. За систематические тяжёлые нарушения возможен постоянный бан.</div>
+        </article>
+
+        <article class="rule" style="--i:25">
+          <div class="rule-title"><span class="num">4.7</span><h3>Ошибочное наказание</h3></div>
+          <div class="rule-body">Если наказание выдано ошибочно, администрация может отменить его. Временные ограничения должны быть сняты после подтверждения ошибки.</div>
+        </article>
+
+        <div class="mod-note reveal">
+          <strong>Отбор на модератора</strong>
+          <p>Требования и порядок отбора опубликованы отдельно: <a href="https://example.com/" target="_blank" rel="noopener noreferrer">прочитать статью по отбору на модератора</a>.</p>
+        </div>
+      </section>
+
+      <section class="section" id="contacts">
+        <div class="section-head reveal">
+          <div class="section-kicker">Раздел 05</div>
+          <h2>Официальные ресурсы</h2>
+          <p class="section-desc">Основные ссылки MoonTune в одном месте.</p>
+        </div>
+
+        <div class="resource-links reveal">
+          <a class="resource-link" href="https://t.me/MoonTune_tribeBot" target="_blank" rel="noopener noreferrer"><span>Бот MoonTune</span><span aria-hidden="true">↗</span></a>
+          <a class="resource-link" href="https://t.me/MoonTune_channel" target="_blank" rel="noopener noreferrer"><span>Канал MoonTune</span><span aria-hidden="true">↗</span></a>
+          <a class="resource-link" href="https://t.me/MoonTune_chat" target="_blank" rel="noopener noreferrer"><span>Чат MoonTune</span><span aria-hidden="true">↗</span></a>
+          <a class="resource-link" href="https://t.me/v4nty" target="_blank" rel="noopener noreferrer"><span>Владелец проекта</span><span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="cta reveal">
+          <h2>MoonTune — звучим вместе.</h2>
+          <p>Эти правила нужны для понятной и спокойной атмосферы, в которой участникам удобно общаться, играть и развивать племя.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">MoonTune</div>
+        <div class="footer-copy">Официальная страница правил племени MoonTune в My Singing Monsters.</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://t.me/MoonTune_tribeBot" target="_blank" rel="noopener noreferrer">Бот</a>
+        <a href="https://t.me/MoonTune_channel" target="_blank" rel="noopener noreferrer">Канал</a>
+        <a href="https://t.me/MoonTune_chat" target="_blank" rel="noopener noreferrer">Чат</a>
+        <a href="https://t.me/v4nty" target="_blank" rel="noopener noreferrer">Владелец</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MoonTune. Все права защищены. My Singing Monsters является собственностью Big Blue Bubble Inc. MoonTune — независимое игровое сообщество.</div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Вернуться наверх">↑</button>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+    const themeColor = document.getElementById('themeColor');
+    const progress = document.getElementById('progress');
+    const backToTop = document.getElementById('backToTop');
+
+    const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+    function applyTheme(theme, persist = false) {
+      root.dataset.theme = theme;
+      themeLabel.textContent = theme === 'dark' ? 'Тёмная' : 'Светлая';
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на тёмную тему');
+      themeColor.setAttribute('content', theme === 'dark' ? '#25221e' : '#f4efe7');
+      if (persist) localStorage.setItem('moontune-theme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('moontune-theme');
+    applyTheme(savedTheme || getSystemTheme());
+
+    themeToggle.addEventListener('click', () => {
+      applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      if (!localStorage.getItem('moontune-theme')) applyTheme(event.matches ? 'dark' : 'light');
+    });
+
+    function updateScrollUi() {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%';
+      backToTop.classList.toggle('show', window.scrollY > 680);
+    }
+
+    updateScrollUi();
+    window.addEventListener('scroll', updateScrollUi, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    const sections = [...document.querySelectorAll('main .section')];
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      });
+    }, { rootMargin: '-30% 0px -58% 0px', threshold: 0 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+  </html>
